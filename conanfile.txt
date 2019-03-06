@@ -1,0 +1,6 @@
+[requires]
+CastGenerator/01.00.00@user/testing
+libcurl/7.61.1@bincrafters/stable
+
+[generators]
+CastGenerator
