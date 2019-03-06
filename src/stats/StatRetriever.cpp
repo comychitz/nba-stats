@@ -17,16 +17,14 @@ static size_t writeDataCallback(char *contents, size_t size,
   return size*nmemb;
 }
 
-bool StatRetriever::get_(const std::map<std::string, std::string> &params,
-                         std::string &response) {
+bool StatRetriever::get(const std::string &endpoint,
+                        const std::map<std::string, std::string> &params,
+                        StatProcessor &processor) {
   CURL *curl = curl_easy_init();
   if (!curl) {
-    std::cout << "CURL INIT ERROR" << std::endl;
     return false;
   }
   const std::string &baseurl = "http://stats.nba.com/stats/";
-
-  endpoint = "playerprofilev2";
 
   // construct full url, with query string 
   std::string url(base + endpoint + "?");
@@ -44,10 +42,13 @@ bool StatRetriever::get_(const std::map<std::string, std::string> &params,
   CURLcode res = curl_easy_perform(curl);
 
   bool retVal = true;
+
   if (res != CURLE_OK) {
-    std::cout << "CURL ERROR: " << curl_easy_strerror(res) << std::endl;
     retVal = false;
+  } else {
+    processor.process(response); 
   }
+
   curl_easy_cleanup(curl);
 
   return retVal;

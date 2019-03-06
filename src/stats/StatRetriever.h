@@ -3,6 +3,7 @@
 
 #include <map>
 #include <string>
+#include "StatProcessor.h"
 
 namespace nba {
 
@@ -12,11 +13,9 @@ class StatRetriever {
 
     virtual ~StatRetriever();
 
-  protected:
-    bool get_(const std::map<std::string, std::string> &params,
-              std::string &response);
-
-    std::string endpoint;
+    bool get(const std::string &endpoint,
+             const std::map<std::string, std::string> &params,
+             StatProcessor &processor);
 };
 
 }
