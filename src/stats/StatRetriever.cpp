@@ -1,6 +1,6 @@
 #include "StatRetriever.h"
-#include <curl/curl.h>
-#include <iostream>
+#include <curl/curl.h> 
+#include <iostream> 
 
 namespace nba {
 
@@ -27,17 +27,19 @@ bool StatRetriever::get(const std::string &endpoint,
   const std::string &baseurl = "http://stats.nba.com/stats/";
 
   // construct full url, with query string 
-  std::string url(base + endpoint + "?");
+  std::string url(baseurl + endpoint + "?");
   for (auto param = params.begin(); param != params.end(); ++param) {
     if (param != params.begin()) {
       url += "&";
     }
-    url += param.first + "=" + param.second;
+    url += param->first + "=" + param->second;
   }
+
+  std::string response;
   curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
   curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
-  curl_easy_setopt(easyhandle, CURLOPT_WRITEFUNCTION, writeDataCallback);
-  curl_easy_setopt(easyhandle, CURLOPT_WRITEDATA, &response);
+  curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeDataCallback);
+  curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
 
   CURLcode res = curl_easy_perform(curl);
 
@@ -55,3 +57,4 @@ bool StatRetriever::get(const std::string &endpoint,
 }
 
 }
+

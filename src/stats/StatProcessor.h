@@ -9,7 +9,7 @@ class StatProcessor {
   public:
     virtual ~StatProcessor() { }
 
-    void process(const std::string &raw) = 0;
+    virtual void process(const std::string &raw) = 0; 
 };
 
 }
