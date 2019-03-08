@@ -3,20 +3,24 @@
 
 #include <map>
 #include <string>
-#include "StatProcessor.h"
 
 namespace nba {
 
+template<typename Params, typename Data>
 class StatRetriever {
   public:
     StatRetriever();
 
     virtual ~StatRetriever();
 
-    bool get(const std::string &endpoint,
-             const std::map<std::string, std::string> &params,
-             StatProcessor &processor);
+    bool get(const Params &params, Data &data);
+
+    virtual std::string determineEndpoint(const Params &params) = 0;
+
+    virtual std::map<std::string, std::string> constructParams(const Params params) = 0;
 };
 
 }
+
+#include "StatRetriever_Impl.h"
 #endif

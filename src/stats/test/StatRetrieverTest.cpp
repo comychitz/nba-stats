@@ -5,25 +5,14 @@
 
 using namespace nba;
 
-class StatProcessorTest : public StatProcessor {
-  public:
-    StatProcessorTest() { }
-
-    virtual ~StatProcessorTest() {}
-
-    void process(const std::string &stats) {
-      std::cout << stats << std::endl;
-    }
-};
-
-
 TEST_CASE("retriever test", "[basic]") {
-  StatProcessorTest processor;
   StatRetriever retriever;
-
-  std::map<std::string, std::string> params;
+  std::map<std::string, std::string> params { {"PlayerID", "2544"},
+                                              {"PerMode", "Totals"} };
   params["PlayerID"] = "2544";
   params["PerMode"] = "Totals";
 
-  REQUIRE(retriever.get("playerprofilev2", params, processor));
+  std::string response;
+  REQUIRE(retriever.get("playerprofilev2", params, response));
+  REQUIRE(!response.empty());
 }
