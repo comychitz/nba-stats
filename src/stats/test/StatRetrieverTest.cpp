@@ -1,6 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
 #include "StatRetriever.h"
+#include "StatProcessorJson.h"
 #include <iostream>
 
 using namespace nba;
@@ -19,6 +20,17 @@ class StatProcessorTest : public StatProcessor {
 
 TEST_CASE("retriever test", "[basic]") {
   StatProcessorTest processor;
+  StatRetriever retriever;
+
+  std::map<std::string, std::string> params;
+  params["PlayerID"] = "2544";
+  params["PerMode"] = "Totals";
+
+  REQUIRE(retriever.get("playerprofilev2", params, processor));
+}
+
+TEST_CASE("json proccesor", "[basic]") {
+  StatProcessorJson processor;
   StatRetriever retriever;
 
   std::map<std::string, std::string> params;
