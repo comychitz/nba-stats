@@ -47,7 +47,7 @@ bool StatRetriever::get(const std::string &endpoint,
 
   std::string response;
   curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
-  curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
+  //curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
   curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeDataCallback);
   curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
  
