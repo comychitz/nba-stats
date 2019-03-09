@@ -3,6 +3,7 @@
 
 #include "Player.h"
 #include <string>
+#include <vector>
 #include <unordered_map>
 
 namespace nba {
@@ -15,10 +16,13 @@ class PlayerDb {
 
     bool init(const std::string &srcPath);
 
-    bool getPlayer(const std::string &fullname, Player &player) const;
+    bool getPlayer(const std::string &name, Player &player) const;
 
   private:
-    std::unordered_map<std::string, Player> players_;
+    void parsePlayer_(const std::string &line, unsigned count);
+
+    std::vector<Player> players_;
+    std::unordered_map<std::string, unsigned> nameToPlayerId_;
 };
 
 }

@@ -515,7 +515,7 @@
 1627852,Brussino,Nicolas,Nicolas Brussino
 76289,Bryant,Emmette,Emmette Bryant
 76290,Bryant,Joe,Joe Bryant
-977,Bryant,Kobe,Kobe Bryant
+977,Bryant,Kobe,Kobe Bryant, Kobe, Black Mamba
 95,Bryant,Mark,Mark Bryant
 1628418,Bryant,Thomas,Thomas Bryant
 76291,Bryant,Wallace,Wallace Bryant
@@ -840,7 +840,7 @@
 201191,Curry,JamesOn,JamesOn Curry
 688,Curry,Michael,Michael Curry
 203552,Curry,Seth,Seth Curry
-201939,Curry,Stephen,Stephen Curry
+201939,Curry,Stephen,Stephen Curry,Steph Curry
 687,Cvetkovic,Rastko,Rastko Cvetkovic
 76505,D'Antoni,Mike,Mike D'Antoni
 76496,Dahler,Ed,Ed Dahler
@@ -1887,7 +1887,7 @@
 77116,James,Gene,Gene James
 1080,James,Henry,Henry James
 1744,James,Jerome,Jerome James
-2544,James,LeBron,LeBron James
+2544,James,LeBron,LeBron James,The King,LBJ,Lebron
 2229,James,Mike,Mike James
 1628455,James,Mike,Mike James
 1906,James,Tim,Tim James
@@ -2048,7 +2048,7 @@
 201599,Jordan,DeAndre,DeAndre Jordan
 77205,Jordan,Eddie,Eddie Jordan
 202366,Jordan,Jerome,Jerome Jordan
-893,Jordan,Michael,Michael Jordan
+893,Jordan,Michael,Michael Jordan,MJ
 674,Jordan,Reggie,Reggie Jordan
 77208,Jordan,Thomas,Thomas Jordan
 77209,Jordan,Walter,Walter Jordan
