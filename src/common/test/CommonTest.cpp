@@ -3,6 +3,7 @@
 #include <catch2/catch.hpp>
 #endif
 #include "TeamDb.h"
+#include "StatMap.h"
 #include "PlayerDb.h"
 
 using namespace nba;
@@ -64,4 +65,18 @@ TEST_CASE("resolve team name", "[basic]") {
 
   REQUIRE(db.getTeam("Golden State Warriors", team));
   CHECK(team.id == 1610612744);
+}
+
+TEST_CASE("stat map test", "[basic]") {
+  StatMap map;
+
+  map.add("LEAGUE_ID", "00");
+  map.add("PTS", "17.5");
+
+  std::string leagueid;
+  CHECK(map.get("LEAGUE_ID", leagueid));
+  CHECK(leagueid == "00");
+  float pts = 0.0;
+  CHECK(map.get("PTS", pts));
+  CHECK(pts == 17.5);
 }
