@@ -19,6 +19,8 @@ void StatProcessorJson::process(const std::string &raw) {
     std::cout << "ERROR: Failed to read json : " << raw << std::endl;
     return;
   }
+
+  // TODO - add to StatMap
 }
 
 }

@@ -3,6 +3,7 @@
 
 #include <string>
 #include <unordered_map>
+#include <iostream>
 
 namespace nba {
 
@@ -50,6 +51,17 @@ namespace nba {
           return true;
         }
         return false;
+      }
+
+      void print() const {
+        for (auto stat : map_) {
+          std::cout << stat.first << " ";
+        }
+        std::cout << std::endl;
+        for (auto stat : map_) {
+          std::cout << stat.second << " ";
+        }
+        std::cout << std::endl;
       }
 
     private:
