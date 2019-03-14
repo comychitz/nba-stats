@@ -12,9 +12,8 @@ class StatProcessorJson : public StatProcessor {
 
     virtual ~StatProcessorJson();
 
-    void process(const std::string &raw);
-
-    Json::Value root;
+    void process(const std::string &raw,
+                 std::vector<StatMap> &stats);
 };
 
 }

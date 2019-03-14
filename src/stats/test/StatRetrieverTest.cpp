@@ -17,36 +17,38 @@ class StatProcessorTest : public StatProcessor {
 
     virtual ~StatProcessorTest() {}
 
-    void process(const std::string &stats) {
+    void process(const std::string &stats, std::vector<StatMap> &) {
       REQUIRE(!stats.empty());
     }
 };
 
 TEST_CASE("retriever test", "[basic]") {
   StatProcessorTest processor;
-  StatRetriever retriever;
+  StatRetriever retriever(processor);
 
   std::map<std::string, std::string> params;
   params["PlayerID"] = "2544";
   params["PerMode"] = "Totals";
 
-  REQUIRE(retriever.get("playerprofilev2", params, processor));
+  std::vector<StatMap> stats;
+  REQUIRE(retriever.get("playerprofilev2", params, stats));
 }
 
 TEST_CASE("json proccesor", "[basic]") {
   StatProcessorJson processor;
-  StatRetriever retriever;
+  StatRetriever retriever(processor);
 
+  std::vector<StatMap> stats;
   std::map<std::string, std::string> params;
   params["PlayerID"] = "2544";
   params["PerMode"] = "Totals";
 
-  REQUIRE(retriever.get("playerprofilev2", params, processor));
+  REQUIRE(retriever.get("playerprofilev2", params, stats));
 }
 
 TEST_CASE("player retriever", "[basic]") {
   StatProcessorJson processor;
-  StatRetriever retriever;
+  StatRetriever retriever(processor);
 
   PlayerDb db;
   db.init("../../data/players.txt");
@@ -58,5 +60,6 @@ TEST_CASE("player retriever", "[basic]") {
   params["PlayerID"] = Util::toStr(player.id);
   params["PerMode"] = "Totals";
 
-  REQUIRE(retriever.get("playerprofilev2", params, processor));
+  std::vector<StatMap> stats;
+  REQUIRE(retriever.get("playerprofilev2", params, stats));
 }

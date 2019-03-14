@@ -11,7 +11,17 @@ namespace nba {
     public:
       StatMap() { }
 
+      StatMap(const std::string &name) : name_(name) { }
+
       ~StatMap() { }
+
+      void name(const std::string &n) {
+        name_ = n;
+      }
+
+      const std::string &name() const { 
+        return name_;
+      }
 
       void add(const std::string &key, const std::string &val) {
         map_[key] = val;
@@ -54,6 +64,7 @@ namespace nba {
       }
 
       void print() const {
+        std::cout << name_ << std::endl;
         for (auto stat : map_) {
           std::cout << stat.first << " ";
         }
@@ -65,6 +76,7 @@ namespace nba {
       }
 
     private:
+      std::string name_;
       std::unordered_map<std::string, std::string> map_;
   };
 

@@ -9,13 +9,16 @@ namespace nba {
 
 class StatRetriever {
   public:
-    StatRetriever();
+    StatRetriever(StatProcessor &processor);
 
     virtual ~StatRetriever();
 
     bool get(const std::string &endpoint,
              const std::map<std::string, std::string> &params,
-             StatProcessor &processor);
+             std::vector<StatMap> &stats);
+
+  private:
+    StatProcessor &processor_;
 };
 
 }

@@ -4,7 +4,7 @@
 
 namespace nba {
 
-StatRetriever::StatRetriever() {
+StatRetriever::StatRetriever(StatProcessor &processor) : processor_(processor) {
 }
 
 StatRetriever::~StatRetriever() {
@@ -19,7 +19,7 @@ static size_t writeDataCallback(char *contents, size_t size,
 
 bool StatRetriever::get(const std::string &endpoint,
                         const std::map<std::string, std::string> &params,
-                        StatProcessor &processor) {
+                        std::vector<StatMap> &stats) {
   CURL *curl = curl_easy_init();
   if (!curl) {
     return false;
@@ -58,7 +58,7 @@ bool StatRetriever::get(const std::string &endpoint,
   if (res != CURLE_OK) {
     retVal = false;
   } else {
-    processor.process(response); 
+    processor_.process(response, stats); 
   }
 
   curl_easy_cleanup(curl);
